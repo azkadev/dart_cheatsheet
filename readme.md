@@ -86,4 +86,20 @@ Bais command yang biasa di gunakan dalam zig
     ```bash
     dart pub add name_package
     ```
-    
+5. Download Package
+
+    ```bash
+    dart pub get
+    ```
+
+6. Remove Package
+
+    ```bash
+    dart pub remove name_package
+    ```
+
+7. Publish package
+
+    ```bash
+    dart pub publish
+    ```
