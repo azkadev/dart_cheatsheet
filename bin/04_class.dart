@@ -1,6 +1,8 @@
 // ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, empty_catches
 
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
 void main(List<String> args) {
   Client client = Client(
@@ -16,6 +18,7 @@ class Client {
   late String full_name;
   late String username;
   final DateTime joinDatetime = DateTime.now();
+
   Client({
     required this.id,
     this.full_name = "",
@@ -28,6 +31,10 @@ class Client {
       full_name: data["full_name"],
       username: data["username"],
     );
+  }
+
+  static Future<Client> loadFromFile(File file) async {
+    return Client.createFromJson(json.decode(await file.readAsString()));
   }
 
   String get toMessage {
@@ -48,4 +55,16 @@ class Client {
   String toString() {
     return "alow manies";
   }
+}
+
+class ClientFull extends Client {
+  final String client_name;
+  final String? phone_number;
+  ClientFull(
+    this.client_name, {
+    super.full_name,
+    required super.id,
+    required super.username,
+    this.phone_number,
+  });
 }
