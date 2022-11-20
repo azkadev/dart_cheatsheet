@@ -1,10 +1,9 @@
 name: dart_cheatsheet
 description: A starting point for Dart libraries or applications.
 version: 0.0.0
-# homepage: https://www.example.com
-
 homepage: https://youtube.com/@azkadev
 repository: https://github.com/azkadev
+
 environment:
   sdk: '>=2.18.2 <3.0.0'
 
