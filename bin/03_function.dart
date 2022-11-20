@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, empty_catches
 
+import 'dart:async';
+
 void main(List<String> args) {
   print(calculate(59, 41));
   print(information(
@@ -12,15 +14,12 @@ void main(List<String> args) {
     "azkadev",
     isWithSpace: true,
   ));
-  print(jsonToMessage(
-    {
-      "first_name": "azka",
-      "username": "@azkadev"
+  print(jsonToMessage({"first_name": "azka", "username": "@azkadev"}, media: {"first_name": "Nama Depan"}));
+  compute(
+    onLoopData: (index, total_loop) {
+      print(index);
     },
-    media: {
-      "first_name": "Nama Depan"
-    }
-  ));
+  );
 }
 
 num calculate(num number_one, num number_two) {
@@ -77,4 +76,13 @@ String jsonToMessage(Map data, {Map media = const {}}) {
     } catch (e) {}
   });
   return message;
+}
+
+Future<void> compute({int count_loop = 10, required FutureOr<void> Function(int index, int total_loop) onLoopData}) async {
+  await Future(() async {
+    for (var i = 0; i < count_loop; i++) {
+      await onLoopData.call(i, count_loop);
+    }
+  });
+  return;
 }
