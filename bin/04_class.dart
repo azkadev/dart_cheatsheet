@@ -11,6 +11,8 @@ void main(List<String> args) {
     username: "azkadev",
   );
   print(client.toJson());
+  ClientFull clientFull = ClientFull("spalslap", id: "askaoska", username: "azaka");
+  print(clientFull.toJson());
 }
 
 class Client {
@@ -49,12 +51,6 @@ class Client {
       "join_date_time": joinDatetime.millisecondsSinceEpoch,
     };
   }
-
-  /// replace
-  @override
-  String toString() {
-    return "alow manies";
-  }
 }
 
 class ClientFull extends Client {
@@ -67,4 +63,12 @@ class ClientFull extends Client {
     required super.username,
     this.phone_number,
   });
+
+  @override
+  Map toJson() {
+    Map data = super.toJson();
+    data["client_name"] = client_name;
+    data["phone_number"] = phone_number;
+    return data;
+  }
 }
